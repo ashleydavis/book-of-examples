@@ -1,7 +1,8 @@
 import { computePartialLayout } from "./lib/layout";
+import { assets } from "./tests/lib/data/assets";
 
 async function main() {
-    console.log(computePartialLayout(undefined, [], 0, 0));
+    console.log(computePartialLayout(undefined, assets, 600, 150));
 }
 
 main()
