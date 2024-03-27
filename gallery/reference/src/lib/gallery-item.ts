@@ -1,8 +1,109 @@
-
 //
 // Represents an asset that can be displayed in the gallery.
 //
-export interface IGalleryItem {
+export interface IGalleryItem  { //todo: remove unecessary fields.
+
+    //
+    // The ID of the asset.
+    //
+    _id: string;
+
+    //
+    // The global index of the asset.
+    //
+    globalIndex: number;
+
+    //
+    // The horizontal location where the image starts in the gallery.
+    //
+    offsetX?: number;
+
+    //
+    // The width of the item.
+    //
+    width: number;
+
+    //
+    // The height of item.
+    //
+    height: number;
+
+    //
+    // The computed width of the thumbnail.
+    //
+    thumbWidth?: number;
+
+    //
+    // The computed height of the thumbnail.
+    //
+    thumbHeight?: number;
+
+    //
+    // The aspect ratio of them item, once computed.
+    //
+    aspectRatio?: number;
+
+    //
+    // The original name of the asset before it was uploaded.
+    //
+    origFileName: string;
+
+    //
+    // The hash of the asset.
+    //
+    hash: string;
+
+    //
+    // Reverse geocoded location of the asset, if known.
+    //
+    location?: string;
+
+    //
+    // The date the file was created.
+    //
+    fileDate: string;
+
+    //
+    // The date the photo was taken, if known.
+    //
+    photoDate?: string;
+
+    //
+    /// The date the asset is sorted by in the backend.
+    //
+    sortDate: string;
+
+    //
+    /// The date the asset was uploaded.
+    //
+    uploadDate: string;
+
+    //
+    // Optional properties, like exif data.
+    //
+    properties?: any;
+
+    //
+    // Labels that have been added to the asset.
+    //
+    labels?: string[];
+
+    //
+    // Description of the asset, once it has been set by the user.
+    //
+    description?: string;
+
+    //
+    // Optional grouping for the item.
+    //
+    group?: string[];
+}
+
+
+//
+// Represents an asset that has been added to the layout.
+//
+export interface IGalleryLayoutItem { //todo: remove unecessary fields.
 
     //
     // The ID of the asset.
@@ -118,7 +219,7 @@ export interface IGalleryRow {
     //
     // Items to display in this row in the gallery.
     //
-    items: IGalleryItem[];
+    items: IGalleryLayoutItem[];
 
     //
     // The vertical location where the row starts in the gallery.

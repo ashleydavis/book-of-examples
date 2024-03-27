@@ -2,7 +2,7 @@
 // Implements a row-based layout algorithm.
 //
 
-import { IGalleryItem, IGalleryRow } from "./gallery-item";
+import { IGalleryItem, IGalleryLayoutItem, IGalleryRow } from "./gallery-item";
 
 export interface IGalleryLayout {
     //
@@ -36,9 +36,19 @@ function headingsMatch(headingsA: string[], headingsB: string[]): boolean {
 //
 // Creates or updates a row-based layout for items in the gallery.
 //
-export function computePartialLayout(layout: IGalleryLayout | undefined, items: IGalleryItem[], galleryWidth: number, targetRowHeight: number): IGalleryLayout {
+export function computePartialLayout(existingLayout: IGalleryLayout | undefined, items: IGalleryItem[], galleryWidth: number, targetRowHeight: number): IGalleryLayout {
 
-    if (!layout) {
+    let layout: IGalleryLayout;
+
+    if (existingLayout) {
+        layout = {
+            ...existingLayout,
+            rows: [
+                ...existingLayout.rows,
+            ],
+        };
+    }
+    else {
         layout = {
             rows: [],
             galleryHeight: 0,
@@ -128,17 +138,19 @@ export function computePartialLayout(layout: IGalleryLayout | undefined, items: 
             curRow.headings = itemGroup;
         }
 
-        //
-        // Updated computed thumb resolution.
-        //
-        item.thumbWidth = computedWidth;
-        item.thumbHeight = targetRowHeight;
-        item.aspectRatio = aspectRatio;
+        const layoutItem: IGalleryLayoutItem = {
+            ...item,
 
-        //
-        // Add the item to the row.
-        //
-        curRow.items.push(item);
+            //
+            // Add computed thumb resolution.
+            //
+            thumbWidth: computedWidth,
+            thumbHeight: targetRowHeight,
+            aspectRatio: aspectRatio,
+        };
+
+
+        curRow.items.push(layoutItem);
         curRow.width += computedWidth;
     }
 
