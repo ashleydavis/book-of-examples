@@ -11,6 +11,12 @@ export interface IGalleryLayout {
     rows: IGalleryRow[];
 
     //
+    // The last row of the gallery.
+    // This is kept separate from the other rows to allow for easy appending of new items to this row.
+    //
+    lastRow: IGalleryItem[];
+
+    //
     // The entire height of the gallery.
     //
     galleryHeight: number;
@@ -34,66 +40,18 @@ function headingsMatch(headingsA: string[], headingsB: string[]): boolean {
 }
 
 //
-// Creates or updates a row-based layout for items in the gallery.
+// Get the next row of items, possibly continuing the previous row.
 //
-export function computePartialLayout(existingLayout: IGalleryLayout | undefined, items: IGalleryItem[], galleryWidth: number, targetRowHeight: number): IGalleryLayout {
+export function getNextRow(items: IGalleryItem[], galleryWidth: number, targetRowHeight: number): 
+    { row: IGalleryRow, removedItems: IGalleryItem[], remainingItems: IGalleryItem[] } {
 
-    let layout: IGalleryLayout;
+    const layoutItems: IGalleryLayoutItem[] = [];
+    let width = 0;
 
-    if (existingLayout) {
-        layout = {
-            ...existingLayout,
-            rows: [
-                ...existingLayout.rows,
-            ],
-        };
-    }
-    else {
-        layout = {
-            rows: [],
-            galleryHeight: 0,
-        };
-    }
+    let numItemsAdded = 0;
+    let removedItems: IGalleryItem[] = [];
+    let headings: string[] = [];
 
-    if (!items || !items.length) {
-        return layout;
-    }
-
-    const rows = layout.rows;
-
-    let prevRow: IGalleryRow | undefined = undefined;
-    let curRow: IGalleryRow;
-    let startingRowIndex = 0;
-
-    if (rows.length === 0) {  
-        //
-        // Add the first row.
-        //
-        curRow = {
-            items: [],
-            offsetY: 0,
-            height: targetRowHeight,
-            width: 0,
-            headings: [],
-        };
-    
-        rows.push(curRow);
-    }
-    else {
-        //
-        // Resume the previous row.
-        //
-        startingRowIndex = rows.length-1;
-        curRow = rows[startingRowIndex];
-
-        if (rows.length > 1) {
-            prevRow = rows[rows.length-2];
-        }
-    }
-
-    //
-    // Initially assign each gallery item to a series of rows.
-    //
     for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
         const item = items[itemIndex];
         const aspectRatio = item.width / item.height;
@@ -101,38 +59,22 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
 
         const itemGroup = item.group || [];
 
-        if (curRow.items.length > 0) {
-            if (curRow.width + computedWidth > galleryWidth) {
+        if (layoutItems.length > 0) {
+            if (width + computedWidth > galleryWidth) {
                 //
                 // Break row on width.
                 //
-                prevRow = curRow;
-                curRow = {
-                    items: [],
-                    offsetY: 0,
-                    height: targetRowHeight,
-                    width: 0,
-                    headings: itemGroup,
-                };
-                rows.push(curRow);
+                break;
             }
-            else if (!headingsMatch(curRow.headings, itemGroup)) {
+            else if (!headingsMatch(headings, itemGroup)) {
                 //
                 // Break row on headings.
                 //
-                prevRow = curRow;
-                curRow = {
-                    items: [],
-                    offsetY: 0,
-                    height: targetRowHeight,
-                    width: 0,
-                    headings: itemGroup,
-                };
-                rows.push(curRow);
+                break;
             }
         }
         else {
-            curRow.headings = itemGroup;
+            headings = itemGroup;
         }
 
         const layoutItem: IGalleryLayoutItem = {
@@ -147,9 +89,64 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
             aspectRatio: aspectRatio,
         };
 
+        layoutItems.push(layoutItem);
+        width += computedWidth;
+        numItemsAdded += 1;
+        removedItems.push(item);
+    }
 
-        curRow.items.push(layoutItem);
-        curRow.width += computedWidth;
+    return {
+        row: {
+            items: layoutItems,
+            offsetY: 0,
+            height: targetRowHeight,
+            width,
+            headings,
+        },
+        removedItems,
+        remainingItems: items.slice(numItemsAdded),
+    };
+}
+
+//
+// Creates or updates a row-based layout for items in the gallery.
+//
+export function computePartialLayout(existingLayout: IGalleryLayout | undefined, items: IGalleryItem[], galleryWidth: number, targetRowHeight: number): IGalleryLayout {
+
+    let rows: IGalleryRow[];
+    let galleryHeight: number;
+    if (existingLayout) {   
+        //
+        // Start with the rows from the existing layout.
+        // Note the last row is dropped because we'll rebuild it.
+        //
+        rows = existingLayout.rows.slice(0, existingLayout.rows.length-1);
+        galleryHeight = existingLayout.galleryHeight;
+    }
+    else {
+        rows = [];
+        galleryHeight = 0;
+    }
+
+    let remainingItems = items;
+    let startingRowIndex = 0;
+    if (existingLayout && existingLayout.rows.length > 0) {
+        //
+        // Restarting the last row of the existing layout.
+        //
+        startingRowIndex = existingLayout.rows.length-1;
+        remainingItems = existingLayout.lastRow.concat(remainingItems);
+    }
+
+    //
+    // Initially assign each gallery item to a series of rows.
+    //
+    let lastRow: IGalleryItem[] = [];
+    while (remainingItems.length > 0) {
+        const { row, removedItems, remainingItems: newRemainingItems } = getNextRow(remainingItems, galleryWidth, targetRowHeight);
+        rows.push(row);
+        remainingItems = newRemainingItems;
+        lastRow = removedItems;
     }
 
     //
@@ -248,8 +245,8 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
 
     for (let rowIndex = startingRowIndex; rowIndex < rows.length-1; rowIndex++) {
         const row = rows[rowIndex];
-        row.offsetY = layout.galleryHeight;
-        layout.galleryHeight += row.height;
+        row.offsetY = galleryHeight;
+        galleryHeight += row.height;
 
         let accumulatedWidth = 0;
 
@@ -259,7 +256,11 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
         }
     }
 
-    return layout;
+    return {
+        rows,
+        lastRow,
+        galleryHeight,
+    };
 }
 
 //
