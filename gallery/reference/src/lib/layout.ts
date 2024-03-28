@@ -113,29 +113,27 @@ export function getNextRow(items: IGalleryItem[], galleryWidth: number, targetRo
 //
 export function computePartialLayout(existingLayout: IGalleryLayout | undefined, items: IGalleryItem[], galleryWidth: number, targetRowHeight: number): IGalleryLayout {
 
-    let rows: IGalleryRow[];
+    let existingRows: IGalleryRow[];
+    let rows: IGalleryRow[] = [];
     let galleryHeight: number;
+    let remainingItems = items;
     if (existingLayout) {   
         //
         // Start with the rows from the existing layout.
         // Note the last row is dropped because we'll rebuild it.
         //
-        rows = existingLayout.rows.slice(0, existingLayout.rows.length-1);
+        existingRows = existingLayout.rows.slice(0, existingLayout.rows.length-1);
         galleryHeight = existingLayout.galleryHeight;
+        if (existingLayout.rows.length > 0) {
+            //
+            // Restarting the last row of the existing layout.
+            //
+            remainingItems = existingLayout.lastRow.concat(remainingItems);
+        }
     }
     else {
-        rows = [];
+        existingRows = [];
         galleryHeight = 0;
-    }
-
-    let remainingItems = items;
-    let startingRowIndex = 0;
-    if (existingLayout && existingLayout.rows.length > 0) {
-        //
-        // Restarting the last row of the existing layout.
-        //
-        startingRowIndex = existingLayout.rows.length-1;
-        remainingItems = existingLayout.lastRow.concat(remainingItems);
     }
 
     //
@@ -152,7 +150,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
     //
     // For all rows, except the last row, stretch the items towards the right hand boundary.
     //
-    for (let rowIndex = startingRowIndex; rowIndex < rows.length-1; rowIndex++) {
+    for (let rowIndex = 0; rowIndex < rows.length-1; rowIndex++) {
         const nextRow = rows[rowIndex+1];
         if (!headingsMatch(rows[rowIndex].headings, nextRow.headings)) {
             continue; // Don't expand the last row in each group.
@@ -180,7 +178,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
     //
     // Now pull back the width of all rows so they don't overlap the right hand edge by too much.
     //
-    for (let rowIndex = startingRowIndex; rowIndex < rows.length-1; rowIndex++) {
+    for (let rowIndex = 0; rowIndex < rows.length-1; rowIndex++) {
         const nextRow = rows[rowIndex+1];
         if (!headingsMatch(rows[rowIndex].headings, nextRow.headings)) {
             continue; // Don't expand the last row in each group.
@@ -218,7 +216,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
     //
     let prevHeadings: string[] = [];
 
-    for (let rowIndex = startingRowIndex; rowIndex < rows.length; rowIndex++) {
+    for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
         const row = rows[rowIndex];
         //todo: Need to add headings back in.
         // if (!headingsMatch(row.headings, prevHeadings)) {
@@ -241,7 +239,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
     // Computes the offsets of each row and total height of the gallery.
     //
 
-    for (let rowIndex = startingRowIndex; rowIndex < rows.length-1; rowIndex++) {
+    for (let rowIndex = 0; rowIndex < rows.length-1; rowIndex++) {
         const row = rows[rowIndex];
         row.offsetY = galleryHeight;
         galleryHeight += row.height;
