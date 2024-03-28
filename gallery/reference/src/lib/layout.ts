@@ -178,38 +178,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
     //
     // Now pull back the width of all rows so they don't overlap the right hand edge by too much.
     //
-    for (let rowIndex = 0; rowIndex < rows.length-1; rowIndex++) {
-        const nextRow = rows[rowIndex+1];
-        if (!headingsMatch(rows[rowIndex].headings, nextRow.headings)) {
-            continue; // Don't expand the last row in each group.
-        }
-
-        let pullback = 1;
-        let origHeight = rows[rowIndex].height;
-        let prevHeight = origHeight;
-
-        while (true) {
-
-            const newHeight = origHeight - pullback;
-            rows[rowIndex] = sizeRowToHeight(rows[rowIndex], newHeight);
-
-            if (rows[rowIndex].width < galleryWidth) {
-                //
-                // Pulled the row width in too far, restore the previous height.
-                //
-                rows[rowIndex] = sizeRowToHeight(rows[rowIndex], prevHeight);
-                break;
-            }
-
-            prevHeight = newHeight;
-            
-            // 
-            // Each time we double the amount of pullback we try. It
-            // results in too many iterations if we advance this by one each loop.
-            //
-            pullback *= 2;
-        }
-    }
+    pullbackRows(rows, galleryWidth);
 
     //
     // Add group headings.
@@ -257,6 +226,44 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
         lastRow,
         galleryHeight,
     };
+}
+
+//
+// Now pull back the width of all rows so they don't overlap the right hand edge by too much.
+//
+function pullbackRows(rows: IGalleryRow[], galleryWidth: number) {
+    for (let rowIndex = 0; rowIndex < rows.length - 1; rowIndex++) {
+        const nextRow = rows[rowIndex + 1];
+        if (!headingsMatch(rows[rowIndex].headings, nextRow.headings)) {
+            continue; // Don't expand the last row in each group.
+        }
+
+        let pullback = 1;
+        let origHeight = rows[rowIndex].height;
+        let prevHeight = origHeight;
+
+        while (true) {
+
+            const newHeight = origHeight - pullback;
+            rows[rowIndex] = sizeRowToHeight(rows[rowIndex], newHeight);
+
+            if (rows[rowIndex].width < galleryWidth) {
+                //
+                // Pulled the row width in too far, restore the previous height.
+                //
+                rows[rowIndex] = sizeRowToHeight(rows[rowIndex], prevHeight);
+                break;
+            }
+
+            prevHeight = newHeight;
+
+            // 
+            // Each time we double the amount of pullback we try. It
+            // results in too many iterations if we advance this by one each loop.
+            //
+            pullback *= 2;
+        }
+    }
 }
 
 //
