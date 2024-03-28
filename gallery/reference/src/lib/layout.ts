@@ -150,35 +150,12 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
     //
     // For all rows, except the last row, stretch the items towards the right hand boundary.
     //
-    for (let rowIndex = 0; rowIndex < rows.length-1; rowIndex++) {
-        const nextRow = rows[rowIndex+1];
-        if (!headingsMatch(rows[rowIndex].headings, nextRow.headings)) {
-            continue; // Don't expand the last row in each group.
-        }
-
-        const gap = galleryWidth - rows[rowIndex].width;
-        const deltaWidth = gap / rows[rowIndex].items.length;
-
-        let maxThumbHeight = 0;
-        rows[rowIndex].width = 0;
-
-        //
-        // Expand each item to fill the gap.
-        //
-        for (const item of rows[rowIndex].items) {
-            item.thumbWidth! += deltaWidth;
-            item.thumbHeight = item.thumbWidth! * (1.0 / item.aspectRatio!);
-            rows[rowIndex].width += item.thumbWidth!;
-            maxThumbHeight = Math.max(maxThumbHeight, item.thumbHeight);
-        }
-
-        rows[rowIndex] = sizeRowToHeight(rows[rowIndex], maxThumbHeight);
-    }
+    rows = expandRows(rows, galleryWidth);
 
     //
     // Now pull back the width of all rows so they don't overlap the right hand edge by too much.
     //
-    pullbackRows(rows, galleryWidth);
+    rows = pullbackRows(rows, galleryWidth);
 
     //
     // Add group headings.
@@ -217,7 +194,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
 
         for (const item of row.items) {
             item.offsetX = accumulatedWidth;
-            accumulatedWidth += item.thumbWidth!;
+            accumulatedWidth += item.thumbWidth;
         }
     }
 
@@ -229,29 +206,84 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
 }
 
 //
+// For all rows, except the last row, stretch the items towards the right hand boundary.
+//
+function expandRows(rows: IGalleryRow[], galleryWidth: number): IGalleryRow[] {
+
+    const outputRows: IGalleryRow[] = [];
+
+    for (let rowIndex = 0; rowIndex < rows.length - 1; rowIndex++) {
+        let row = rows[rowIndex];
+        const nextRow = rows[rowIndex + 1];
+        if (!headingsMatch(row.headings, nextRow.headings)) {
+            // Don't expand the last row in each group.
+            outputRows.push(row); // No change.
+            continue;
+        }
+
+        const gap = galleryWidth - row.width;
+        const deltaWidth = gap / row.items.length;
+
+        //
+        // Expand each item to fill the gap.
+        //
+        const expandedItems = row.items.map(item => {
+            const newWidth = item.thumbWidth + deltaWidth;
+            return {
+                ...item,
+                thumbWidth: newWidth,
+                thumbHeight: newWidth * (1.0 / item.aspectRatio),
+            };
+        });
+
+        //
+        // Resize the row to the height of the tallest item.
+        //
+        const rowWidth = expandedItems.reduce((acc, item) => acc + item.thumbWidth, 0);
+        const expandedRow = {
+            ...row,
+            width: rowWidth,
+            items: expandedItems,
+        };
+        const maxThumbHeight = Math.max(...expandedItems.map(item => item.thumbHeight));
+        outputRows.push(sizeRowToHeight(expandedRow, maxThumbHeight));
+    }
+
+    outputRows.push(rows[rows.length - 1]); // The last row in the gallery.
+
+    return outputRows;
+}
+
+//
 // Now pull back the width of all rows so they don't overlap the right hand edge by too much.
 //
-function pullbackRows(rows: IGalleryRow[], galleryWidth: number) {
-    for (let rowIndex = 0; rowIndex < rows.length - 1; rowIndex++) {
+function pullbackRows(rows: IGalleryRow[], galleryWidth: number): IGalleryRow[] {
+
+    const outputRows: IGalleryRow[] = [];
+
+    for (let rowIndex = 0; rowIndex < rows.length - 1; rowIndex++) { // Don't touch the last row in the gallery.
+        let row = rows[rowIndex];
         const nextRow = rows[rowIndex + 1];
         if (!headingsMatch(rows[rowIndex].headings, nextRow.headings)) {
-            continue; // Don't expand the last row in each group.
+            // Don't expand the last row in each group.
+            outputRows.push(row); // No change.
+            continue; 
         }
 
         let pullback = 1;
-        let origHeight = rows[rowIndex].height;
+        let origHeight = row.height;
         let prevHeight = origHeight;
 
         while (true) {
 
             const newHeight = origHeight - pullback;
-            rows[rowIndex] = sizeRowToHeight(rows[rowIndex], newHeight);
+            row = sizeRowToHeight(row, newHeight);
 
-            if (rows[rowIndex].width < galleryWidth) {
+            if (row.width < galleryWidth) {
                 //
                 // Pulled the row width in too far, restore the previous height.
                 //
-                rows[rowIndex] = sizeRowToHeight(rows[rowIndex], prevHeight);
+                row = sizeRowToHeight(row, prevHeight);
                 break;
             }
 
@@ -263,7 +295,13 @@ function pullbackRows(rows: IGalleryRow[], galleryWidth: number) {
             //
             pullback *= 2;
         }
+
+        outputRows.push(row);
     }
+
+    outputRows.push(rows[rows.length - 1]); // The last row in the gallery.
+
+    return outputRows;
 }
 
 //
