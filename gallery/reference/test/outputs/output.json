@@ -1,91 +1,34 @@
 {
   "rows": [
     {
-      "startingAssetDisplayIndex": 0,
       "items": [
         {
           "_id": "63e9c6379164637613e9ef32",
-          "contentType": "image/jpeg",
-          "width": 5349,
-          "height": 8019,
-          "description": "a sandy beach with a body of water in the distance",
-          "location": "Ouddorp, Niederlande",
-          "properties": {
-            "exif": {
-              "make": "Canon",
-              "model": " EOS R5",
-              "name": "Canon, EOS R5",
-              "exposure_time": "1/1000",
-              "aperture": "2.8",
-              "focal_length": "50.0",
-              "iso": 100
-            }
-          },
-          "photoDate": "2023-01-09T04:36:22Z",
+          "offsetX": 0,
           "thumbWidth": 111.13285200958373,
           "thumbHeight": 166.60578430825424,
-          "aspectRatio": 0.6670407781518892,
-          "offsetX": 0
+          "aspectRatio": 0.6670407781518892
         },
         {
           "_id": "63e9c6379164637613e9ef33",
-          "contentType": "image/jpeg",
-          "width": 4000,
-          "height": 6000,
-          "description": "Portland Fashion Model wearing a gold crown and necklace Portrait taken by Portland Photographer Lance Reis on my Sonya7iii in my photography studio.",
-          "location": "Portland, OR, USA",
-          "properties": {
-            "exif": {
-              "make": "Sony",
-              "model": null,
-              "name": "Sony",
-              "exposure_time": null,
-              "aperture": null,
-              "focal_length": "0.0",
-              "iso": null
-            }
-          },
-          "photoDate": "2023-01-09T15:50:46Z",
+          "offsetX": 111.13285200958373,
           "thumbWidth": 111.07052287216949,
           "thumbHeight": 166.60578430825424,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 111.13285200958373
+          "aspectRatio": 0.6666666666666666
         },
         {
           "_id": "63e9c6379164637613e9ef34",
-          "contentType": "image/jpeg",
-          "width": 3600,
-          "height": 2400,
-          "description": "Smiling Catholic priest (jesuit) giving his blessing at New Yearˇs",
-          "location": "Trnava, Slovakia",
-          "properties": {
-            "exif": {
-              "make": "Canon",
-              "model": " EOS R6",
-              "name": "Canon, EOS R6",
-              "exposure_time": "1/400",
-              "aperture": "2",
-              "focal_length": "35.0",
-              "iso": 1600
-            }
-          },
-          "photoDate": "2023-01-12T19:26:04Z",
+          "offsetX": 222.20337488175323,
           "thumbWidth": 249.90867646238138,
           "thumbHeight": 166.60578430825424,
-          "aspectRatio": 1.5,
-          "offsetX": 222.20337488175323
+          "aspectRatio": 1.5
         },
         {
           "_id": "63e9c6379164637613e9ef35",
-          "contentType": "image/jpeg",
-          "width": 4923,
-          "height": 6154,
-          "description": "a woman with her hands on her hips",
-          "photoDate": "2023-01-13T15:21:25Z",
+          "offsetX": 472.1120513441346,
           "thumbWidth": 133.2792128939772,
           "thumbHeight": 166.60578430825424,
-          "aspectRatio": 0.7999675008124797,
-          "offsetX": 472.1120513441346
+          "aspectRatio": 0.7999675008124797
         }
       ],
       "offsetY": 0,
@@ -94,67 +37,34 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 4,
       "items": [
         {
           "_id": "63e9c6379164637613e9ef36",
-          "contentType": "image/jpeg",
-          "width": 5472,
-          "height": 3648,
-          "description": "Earthworks Audio - ETHOS - XLR Microphone used for podcasting, gaming, and chatting with friends.",
-          "photoDate": "2023-01-13T22:34:00Z",
+          "offsetX": 0,
           "thumbWidth": 261.37807699258997,
           "thumbHeight": 174.25205132839332,
-          "aspectRatio": 1.5,
-          "offsetX": 0
+          "aspectRatio": 1.5
         },
         {
           "_id": "63e9c6379164637613e9ef37",
-          "contentType": "image/jpeg",
-          "width": 3667,
-          "height": 5500,
-          "description": "a vase with a flower and two eggs on a napkin",
-          "photoDate": "2023-01-16T20:21:03Z",
+          "offsetX": 261.37807699258997,
           "thumbWidth": 116.17859494931241,
           "thumbHeight": 174.25205132839332,
-          "aspectRatio": 0.6667272727272727,
-          "offsetX": 261.37807699258997
+          "aspectRatio": 0.6667272727272727
         },
         {
           "_id": "63e9c6379164637613e9ef38",
-          "contentType": "image/jpeg",
-          "width": 4024,
-          "height": 6048,
-          "description": "a person walking down a snow covered road",
-          "location": "Calgary, AB, Canada",
-          "properties": {
-            "exif": {
-              "make": "NIKON CORPORATION",
-              "model": "NIKON Z 6_2",
-              "name": "NIKON CORPORATION, NIKON Z 6_2",
-              "exposure_time": "1/500",
-              "aperture": "2.8",
-              "focal_length": "40.0",
-              "iso": 100
-            }
-          },
-          "photoDate": "2023-01-16T21:35:04Z",
+          "offsetX": 377.5566719419024,
           "thumbWidth": 115.93754208754211,
           "thumbHeight": 174.25205132839332,
-          "aspectRatio": 0.6653439153439153,
-          "offsetX": 377.5566719419024
+          "aspectRatio": 0.6653439153439153
         },
         {
           "_id": "63e9c6379164637613e9ef39",
-          "contentType": "image/jpeg",
-          "width": 5000,
-          "height": 7500,
-          "description": "a tray of cookies with the word love spelled out",
-          "photoDate": "2023-01-17T16:33:15Z",
+          "offsetX": 493.4942140294445,
           "thumbWidth": 116.16803421892888,
           "thumbHeight": 174.25205132839332,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 493.4942140294445
+          "aspectRatio": 0.6666666666666666
         }
       ],
       "offsetY": 166.60578430825424,
@@ -163,91 +73,34 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 8,
       "items": [
         {
           "_id": "63e9c6389164637613e9ef3a",
-          "contentType": "image/jpeg",
-          "width": 5760,
-          "height": 3840,
-          "description": "a man in a hat is looking at the skyline",
-          "location": "London, London, United Kingdom",
-          "properties": {
-            "exif": {
-              "make": "Canon",
-              "model": " EOS 5D Mark III",
-              "name": "Canon, EOS 5D Mark III",
-              "exposure_time": "1/250",
-              "aperture": "8",
-              "focal_length": "50.0",
-              "iso": 100
-            }
-          },
-          "photoDate": "2023-01-19T16:52:05Z",
+          "offsetX": 0,
           "thumbWidth": 249.94088395407914,
           "thumbHeight": 166.62725596938608,
-          "aspectRatio": 1.5,
-          "offsetX": 0
+          "aspectRatio": 1.5
         },
         {
           "_id": "63e9c6389164637613e9ef3b",
-          "contentType": "image/jpeg",
-          "width": 4578,
-          "height": 6867,
-          "description": "Hazy Winter Day",
-          "location": "Pikkukosken uimaranta, Helsinki, Finland",
-          "properties": {
-            "exif": {
-              "make": "SONY",
-              "model": "ILCE-7M4",
-              "name": "SONY, ILCE-7M4",
-              "exposure_time": "1/125",
-              "aperture": "13.0",
-              "focal_length": "20.0",
-              "iso": 200
-            }
-          },
-          "photoDate": "2023-01-22T21:35:05Z",
+          "offsetX": 249.94088395407914,
           "thumbWidth": 111.08483731292405,
           "thumbHeight": 166.62725596938608,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 249.94088395407914
+          "aspectRatio": 0.6666666666666666
         },
         {
           "_id": "63e9c6389164637613e9ef3c",
-          "contentType": "image/jpeg",
-          "width": 3374,
-          "height": 4218,
-          "description": "A walk through Middle-Earth",
-          "location": "De Djawatan Forest, Purwosari, Benculuk, Banyuwangi Regency, East Java, Indonesia",
-          "properties": {
-            "exif": {
-              "make": "SONY",
-              "model": "ILCE-7M3",
-              "name": "SONY, ILCE-7M3",
-              "exposure_time": "1/3200",
-              "aperture": "1.6",
-              "focal_length": "35.0",
-              "iso": 400
-            }
-          },
-          "photoDate": "2023-01-23T06:06:50Z",
+          "offsetX": 361.0257212670032,
           "thumbWidth": 133.28600323392808,
           "thumbHeight": 166.62725596938608,
-          "aspectRatio": 0.7999051683262209,
-          "offsetX": 361.0257212670032
+          "aspectRatio": 0.7999051683262209
         },
         {
           "_id": "63e9c6389164637613e9ef3d",
-          "contentType": "image/jpeg",
-          "width": 4061,
-          "height": 6091,
-          "description": "Experimental portrait",
-          "photoDate": "2023-01-23T21:06:37Z",
+          "offsetX": 494.3117245009313,
           "thumbWidth": 111.09395608137858,
           "thumbHeight": 166.62725596938608,
-          "aspectRatio": 0.6667213922180266,
-          "offsetX": 494.3117245009313
+          "aspectRatio": 0.6667213922180266
         }
       ],
       "offsetY": 340.85783563664756,
@@ -256,55 +109,27 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 12,
       "items": [
         {
           "_id": "63e9c6389164637613e9ef3e",
-          "contentType": "image/jpeg",
-          "width": 4236,
-          "height": 2829,
-          "description": "a person standing on a balcony of a building",
-          "photoDate": "2023-01-25T02:36:35Z",
+          "offsetX": 0,
           "thumbWidth": 250.2315793105527,
           "thumbHeight": 167.11641592765665,
-          "aspectRatio": 1.4973488865323437,
-          "offsetX": 0
+          "aspectRatio": 1.4973488865323437
         },
         {
           "_id": "63e9c6389164637613e9ef3f",
-          "contentType": "image/jpeg",
-          "width": 5464,
-          "height": 3640,
-          "description": "a winding road in the middle of a snow covered forest",
-          "location": "Weinheim, Deutschland",
-          "properties": {
-            "exif": {
-              "make": "DJI",
-              "model": "FC3411",
-              "name": "DJI, FC3411",
-              "exposure_time": "1/640",
-              "aperture": "2.8",
-              "focal_length": "8.4",
-              "iso": 100
-            }
-          },
-          "photoDate": "2023-01-27T22:48:28Z",
+          "offsetX": 250.2315793105527,
           "thumbWidth": 250.8582683045923,
           "thumbHeight": 167.11641592765665,
-          "aspectRatio": 1.501098901098901,
-          "offsetX": 250.2315793105527
+          "aspectRatio": 1.501098901098901
         },
         {
           "_id": "63e9c6389164637613e9ef40",
-          "contentType": "image/jpeg",
-          "width": 2624,
-          "height": 3936,
-          "description": "a man sitting at a desk working on a laptop",
-          "photoDate": "2023-01-28T18:33:13Z",
+          "offsetX": 501.089847615145,
           "thumbWidth": 111.41094395177109,
           "thumbHeight": 167.11641592765665,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 501.089847615145
+          "aspectRatio": 0.6666666666666666
         }
       ],
       "offsetY": 507.4850916060336,
@@ -313,43 +138,20 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 15,
       "items": [
         {
           "_id": "63e9c6389164637613e9ef41",
-          "contentType": "image/jpeg",
-          "width": 4928,
-          "height": 3264,
-          "description": "a large body of water surrounded by mountains",
-          "location": "Norway",
-          "properties": {
-            "exif": {
-              "make": null,
-              "model": null,
-              "name": null,
-              "exposure_time": null,
-              "aperture": null,
-              "focal_length": null,
-              "iso": null
-            }
-          },
-          "photoDate": "2023-01-28T19:37:15Z",
+          "offsetX": 0,
           "thumbWidth": 301.3122059637762,
           "thumbHeight": 199.57042213185179,
-          "aspectRatio": 1.5098039215686274,
-          "offsetX": 0
+          "aspectRatio": 1.5098039215686274
         },
         {
           "_id": "63e9c6389164637613e9ef42",
-          "contentType": "image/jpeg",
-          "width": 7189,
-          "height": 4795,
-          "description": "a woman sitting on a bench in a gym",
-          "photoDate": "2023-01-29T21:19:53Z",
+          "offsetX": 301.3122059637762,
           "thumbWidth": 299.20996135680554,
           "thumbHeight": 199.57042213185179,
-          "aspectRatio": 1.4992700729927007,
-          "offsetX": 301.3122059637762
+          "aspectRatio": 1.4992700729927007
         }
       ],
       "offsetY": 674.6015075336902,
@@ -358,91 +160,34 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 17,
       "items": [
         {
           "_id": "63e9c6389164637613e9ef43",
-          "contentType": "image/jpeg",
-          "width": 5833,
-          "height": 3889,
-          "description": "a woman riding a horse through the ocean",
-          "location": "Kwinana, WA, Australia",
-          "properties": {
-            "exif": {
-              "make": "SONY",
-              "model": "ILCE-7M3",
-              "name": "SONY, ILCE-7M3",
-              "exposure_time": "1/8000",
-              "aperture": "2.0",
-              "focal_length": "85.0",
-              "iso": 50
-            }
-          },
-          "photoDate": "2023-01-30T06:27:38Z",
+          "offsetX": 0,
           "thumbWidth": 249.93632095321917,
           "thumbHeight": 166.63849686046106,
-          "aspectRatio": 1.499871432244793,
-          "offsetX": 0
+          "aspectRatio": 1.499871432244793
         },
         {
           "_id": "63e9c6399164637613e9ef44",
-          "contentType": "image/jpeg",
-          "width": 4000,
-          "height": 6000,
-          "description": "a man kneeling down on top of a green holding a golf club",
-          "photoDate": "2023-01-30T19:46:02Z",
+          "offsetX": 249.93632095321917,
           "thumbWidth": 111.09233124030737,
           "thumbHeight": 166.63849686046106,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 249.93632095321917
+          "aspectRatio": 0.6666666666666666
         },
         {
           "_id": "63e9c6399164637613e9ef45",
-          "contentType": "image/jpeg",
-          "width": 3740,
-          "height": 4675,
-          "description": "a brown cow standing in a snow covered field",
-          "location": "Puy-de-Dôme, France",
-          "properties": {
-            "exif": {
-              "make": null,
-              "model": null,
-              "name": null,
-              "exposure_time": null,
-              "aperture": null,
-              "focal_length": null,
-              "iso": null
-            }
-          },
-          "photoDate": "2023-01-31T17:24:52Z",
+          "offsetX": 361.02865219352657,
           "thumbWidth": 133.31079748836885,
           "thumbHeight": 166.63849686046106,
-          "aspectRatio": 0.8,
-          "offsetX": 361.02865219352657
+          "aspectRatio": 0.8
         },
         {
           "_id": "63e9c6399164637613e9ef46",
-          "contentType": "image/jpeg",
-          "width": 3093,
-          "height": 4640,
-          "description": "Standing on Hopkins Landing dock in Gibsons, B.C",
-          "location": "Gibsons, BC, Canada",
-          "properties": {
-            "exif": {
-              "make": "Canon",
-              "model": " EOS R7",
-              "name": "Canon, EOS R7",
-              "exposure_time": "1/50",
-              "aperture": "2.8",
-              "focal_length": "35.0",
-              "iso": 250
-            }
-          },
-          "photoDate": "2023-01-31T20:27:28Z",
+          "offsetX": 494.3394496818954,
           "thumbWidth": 111.08036008392372,
           "thumbHeight": 166.63849686046106,
-          "aspectRatio": 0.6665948275862069,
-          "offsetX": 494.3394496818954
+          "aspectRatio": 0.6665948275862069
         }
       ],
       "offsetY": 874.1719296655419,
@@ -451,54 +196,27 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 21,
       "items": [
         {
           "_id": "63e9c6399164637613e9ef47",
-          "contentType": "image/jpeg",
-          "width": 4419,
-          "height": 6628,
-          "description": "a fountain in the middle of a courtyard",
+          "offsetX": 0,
           "thumbWidth": 144.75632887921662,
           "thumbHeight": 217.11811446287572,
-          "aspectRatio": 0.6667169583584792,
-          "offsetX": 0
+          "aspectRatio": 0.6667169583584792
         },
         {
           "_id": "63e9c6399164637613e9ef48",
-          "contentType": "image/jpeg",
-          "width": 6720,
-          "height": 4480,
-          "description": "a man with a beard wearing a hoodie",
-          "location": "Flint, Flint, United States",
-          "properties": {
-            "exif": {
-              "make": "Canon",
-              "model": " EOS R",
-              "name": "Canon, EOS R",
-              "exposure_time": "1/100",
-              "aperture": "3.2",
-              "focal_length": "50.0",
-              "iso": 100
-            }
-          },
-          "photoDate": "2023-02-02T07:09:20Z",
+          "offsetX": 144.75632887921662,
           "thumbWidth": 325.6771716943136,
           "thumbHeight": 217.11811446287572,
-          "aspectRatio": 1.5,
-          "offsetX": 144.75632887921662
+          "aspectRatio": 1.5
         },
         {
           "_id": "63e9c6399164637613e9ef49",
-          "contentType": "image/jpeg",
-          "width": 6890,
-          "height": 9504,
-          "description": "mobina",
-          "photoDate": "2023-02-02T16:56:18Z",
+          "offsetX": 470.4335005735302,
           "thumbWidth": 157.40149501780448,
           "thumbHeight": 217.11811446287572,
-          "aspectRatio": 0.7249579124579124,
-          "offsetX": 470.4335005735302
+          "aspectRatio": 0.7249579124579124
         }
       ],
       "offsetY": 1040.810426526003,
@@ -507,55 +225,27 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 24,
       "items": [
         {
           "_id": "63e9c6399164637613e9ef4a",
-          "contentType": "image/jpeg",
-          "width": 6000,
-          "height": 4000,
-          "description": "a snowboarder is going down a snowy mountain",
-          "location": "Peyragudes, Loudervielle, France",
-          "properties": {
-            "exif": {
-              "make": "SONY",
-              "model": "ILCE-7C",
-              "name": "SONY, ILCE-7C",
-              "exposure_time": "1/2000",
-              "aperture": "8.0",
-              "focal_length": "75.0",
-              "iso": 125
-            }
-          },
-          "photoDate": "2023-02-02T19:45:52Z",
+          "offsetX": 0,
           "thumbWidth": 250.5,
           "thumbHeight": 167,
-          "aspectRatio": 1.5,
-          "offsetX": 0
+          "aspectRatio": 1.5
         },
         {
           "_id": "63e9c6399164637613e9ef4b",
-          "contentType": "image/jpeg",
-          "width": 4000,
-          "height": 6000,
-          "description": "a train traveling down train tracks next to a tunnel",
-          "photoDate": "2023-02-03T00:26:56Z",
+          "offsetX": 250.5,
           "thumbWidth": 111.33333333333333,
           "thumbHeight": 167,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 250.5
+          "aspectRatio": 0.6666666666666666
         },
         {
           "_id": "63e9c6399164637613e9ef4c",
-          "contentType": "image/jpeg",
-          "width": 5472,
-          "height": 3648,
-          "description": "an aerial view of a beach with rocks and water",
-          "photoDate": "2023-02-05T09:22:19Z",
+          "offsetX": 361.8333333333333,
           "thumbWidth": 250.5,
           "thumbHeight": 167,
-          "aspectRatio": 1.5,
-          "offsetX": 361.8333333333333
+          "aspectRatio": 1.5
         }
       ],
       "offsetY": 1257.928540988879,
@@ -564,43 +254,20 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 27,
       "items": [
         {
           "_id": "63e9c63a9164637613e9ef4d",
-          "contentType": "image/jpeg",
-          "width": 5954,
-          "height": 3590,
-          "description": "snow covered mountain trees",
-          "location": "Comox Valley, BC, Canada",
-          "properties": {
-            "exif": {
-              "make": "Canon",
-              "model": " EOS Rebel T7i",
-              "name": "Canon, EOS Rebel T7i",
-              "exposure_time": "1/125",
-              "aperture": "11.0",
-              "focal_length": "29.0",
-              "iso": 400
-            }
-          },
-          "photoDate": "2023-02-07T21:57:22Z",
+          "offsetX": 0,
           "thumbWidth": 315.23893979717724,
           "thumbHeight": 190.07520891364902,
-          "aspectRatio": 1.6584958217270196,
-          "offsetX": 0
+          "aspectRatio": 1.6584958217270196
         },
         {
           "_id": "63e9c63a9164637613e9ef4e",
-          "contentType": "image/jpeg",
-          "width": 6240,
-          "height": 4160,
-          "description": "a plant in a pot sitting on a table next to a stair case",
-          "photoDate": "2023-02-09T14:49:56Z",
+          "offsetX": 315.23893979717724,
           "thumbWidth": 285.11281337047353,
           "thumbHeight": 190.07520891364902,
-          "aspectRatio": 1.5,
-          "offsetX": 315.23893979717724
+          "aspectRatio": 1.5
         }
       ],
       "offsetY": 1424.928540988879,
@@ -609,43 +276,20 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 29,
       "items": [
         {
           "_id": "63e9c63a9164637613e9ef4f",
-          "contentType": "image/jpeg",
-          "width": 7262,
-          "height": 4844,
-          "description": "a close up of a toilet seat with the lid down",
-          "photoDate": "2023-02-10T17:25:56Z",
+          "offsetX": 0,
           "thumbWidth": 320.33073166869076,
           "thumbHeight": 213.67144921552438,
-          "aspectRatio": 1.499174236168456,
-          "offsetX": 0
+          "aspectRatio": 1.499174236168456
         },
         {
           "_id": "63e9c63a9164637613e9ef50",
-          "contentType": "image/jpeg",
-          "width": 3200,
-          "height": 2400,
-          "description": "a living room with a book shelf and a plant",
-          "location": "Akure, Nigeria",
-          "properties": {
-            "exif": {
-              "make": null,
-              "model": null,
-              "name": null,
-              "exposure_time": null,
-              "aperture": null,
-              "focal_length": null,
-              "iso": null
-            }
-          },
-          "photoDate": "2023-01-12T22:54:12Z",
+          "offsetX": 320.33073166869076,
           "thumbWidth": 284.89526562069915,
           "thumbHeight": 213.67144921552438,
-          "aspectRatio": 1.3333333333333333,
-          "offsetX": 320.33073166869076
+          "aspectRatio": 1.3333333333333333
         }
       ],
       "offsetY": 1615.003749902528,
@@ -654,56 +298,27 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 31,
       "items": [
         {
           "_id": "63e9c63a9164637613e9ef51",
-          "contentType": "image/jpeg",
-          "width": 2955,
-          "height": 2364,
-          "description": "a herd of horses standing next to each other",
-          "photoDate": "2023-01-13T14:11:04Z",
+          "offsetX": 0,
           "thumbWidth": 219.16144789579158,
           "thumbHeight": 175.32915831663325,
-          "aspectRatio": 1.25,
-          "offsetX": 0
+          "aspectRatio": 1.25
         },
         {
           "_id": "63e9c63a9164637613e9ef52",
-          "contentType": "image/jpeg",
-          "width": 8256,
-          "height": 5504,
-          "description": "a sandy beach with grass growing on top of it",
-          "photoDate": "2023-01-14T01:32:34Z",
+          "offsetX": 219.16144789579158,
           "thumbWidth": 262.99373747494985,
           "thumbHeight": 175.32915831663325,
-          "aspectRatio": 1.5,
-          "offsetX": 219.16144789579158
+          "aspectRatio": 1.5
         },
         {
           "_id": "63e9c63b9164637613e9ef53",
-          "contentType": "image/jpeg",
-          "width": 4990,
-          "height": 6653,
-          "description": "This lonely road is just beautiful",
-          "location": "Cabrera, 33000, Dominican Republic",
-          "properties": {
-            "exif": {
-              "make": "DJI",
-              "model": "Mini Pro 3",
-              "name": "DJI, Mini Pro 3",
-              "exposure_time": "1/6",
-              "aperture": "1.7",
-              "focal_length": "6.7",
-              "iso": 200
-            }
-          },
-          "fileDate": "2023-01-14T01:48:52Z",
-          "photoDate": "2023-01-14T01:48:52Z",
+          "offsetX": 482.15518537074144,
           "thumbWidth": 131.5034570870284,
           "thumbHeight": 175.32915831663325,
-          "aspectRatio": 0.7500375770329175,
-          "offsetX": 482.15518537074144
+          "aspectRatio": 0.7500375770329175
         }
       ],
       "offsetY": 1828.6751991180522,
@@ -712,103 +327,41 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 34,
       "items": [
         {
           "_id": "63e9c63b9164637613e9ef54",
-          "contentType": "image/jpeg",
-          "width": 2555,
-          "height": 3832,
-          "description": "a man standing in front of a body of water",
-          "photoDate": "2023-01-17T16:20:35Z",
+          "offsetX": 0,
           "thumbWidth": 116.10017814417586,
           "thumbHeight": 174.12754702484614,
-          "aspectRatio": 0.6667536534446764,
-          "offsetX": 0
+          "aspectRatio": 0.6667536534446764
         },
         {
           "_id": "63e9c63b9164637613e9ef55",
-          "contentType": "image/jpeg",
-          "width": 5464,
-          "height": 8192,
-          "description": "journaling bible open to psalm 63 with notes",
-          "photoDate": "2023-01-17T18:25:14Z",
+          "offsetX": 116.10017814417586,
           "thumbWidth": 116.14171349411124,
           "thumbHeight": 174.12754702484614,
-          "aspectRatio": 0.6669921875,
-          "offsetX": 116.10017814417586
+          "aspectRatio": 0.6669921875
         },
         {
           "_id": "63e9c63b9164637613e9ef56",
-          "contentType": "image/jpeg",
-          "width": 3343,
-          "height": 4179,
-          "description": "a building with a clock on the side of it",
-          "location": "Avilés, España",
-          "properties": {
-            "exif": {
-              "make": "NIKON CORPORATION",
-              "model": "NIKON D7500",
-              "name": "NIKON CORPORATION, NIKON D7500",
-              "exposure_time": "1/1000",
-              "aperture": "4.5",
-              "focal_length": "35.0",
-              "iso": 100
-            }
-          },
-          "photoDate": "2023-01-18T16:59:18Z",
+          "offsetX": 232.2418916382871,
           "thumbWidth": 139.2937041646472,
           "thumbHeight": 174.12754702484614,
-          "aspectRatio": 0.7999521416606844,
-          "offsetX": 232.2418916382871
+          "aspectRatio": 0.7999521416606844
         },
         {
           "_id": "63e9c63b9164637613e9ef57",
-          "contentType": "image/jpeg",
-          "width": 4000,
-          "height": 6000,
-          "description": "Paros, Greece.",
-          "location": "Paros, Greece",
-          "properties": {
-            "exif": {
-              "make": null,
-              "model": null,
-              "name": null,
-              "exposure_time": null,
-              "aperture": null,
-              "focal_length": null,
-              "iso": null
-            }
-          },
-          "photoDate": "2023-01-23T08:21:41Z",
+          "offsetX": 371.53559580293427,
           "thumbWidth": 116.08503134989742,
           "thumbHeight": 174.12754702484614,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 371.53559580293427
+          "aspectRatio": 0.6666666666666666
         },
         {
           "_id": "63e9c63b9164637613e9ef58",
-          "contentType": "image/jpeg",
-          "width": 4000,
-          "height": 6016,
-          "description": "🌷",
-          "location": "Hanover, Hanover, Jamaica",
-          "properties": {
-            "exif": {
-              "make": null,
-              "model": null,
-              "name": null,
-              "exposure_time": null,
-              "aperture": null,
-              "focal_length": null,
-              "iso": null
-            }
-          },
-          "photoDate": "2023-01-23T18:54:30Z",
+          "offsetX": 487.6206271528317,
           "thumbWidth": 115.77629456439237,
           "thumbHeight": 174.12754702484614,
-          "aspectRatio": 0.6648936170212766,
-          "offsetX": 487.6206271528317
+          "aspectRatio": 0.6648936170212766
         }
       ],
       "offsetY": 2004.0043574346855,
@@ -817,91 +370,41 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 39,
       "items": [
         {
           "_id": "63e9c63b9164637613e9ef59",
-          "contentType": "image/jpeg",
-          "width": 3600,
-          "height": 5408,
-          "description": "a building with a clock tower in the middle of a city",
-          "location": "Denver, CO, USA",
-          "properties": {
-            "exif": {
-              "make": "NIKON CORPORATION",
-              "model": "NIKON Z 7_2",
-              "name": "NIKON CORPORATION, NIKON Z 7_2",
-              "exposure_time": "1/1000",
-              "aperture": "1.4",
-              "focal_length": "35.0",
-              "iso": 125
-            }
-          },
-          "photoDate": "2023-01-23T18:59:57Z",
+          "offsetX": 0,
           "thumbWidth": 119.59547564358313,
           "thumbHeight": 179.65898118902712,
-          "aspectRatio": 0.665680473372781,
-          "offsetX": 0
+          "aspectRatio": 0.665680473372781
         },
         {
           "_id": "63e9c63b9164637613e9ef5a",
-          "contentType": "image/jpeg",
-          "width": 3961,
-          "height": 5942,
-          "description": "Experimental portrait",
-          "photoDate": "2023-01-23T21:06:37Z",
+          "offsetX": 119.59547564358313,
           "thumbWidth": 119.76257564620269,
           "thumbHeight": 179.65898118902712,
-          "aspectRatio": 0.6666105688320431,
-          "offsetX": 119.59547564358313
+          "aspectRatio": 0.6666105688320431
         },
         {
           "_id": "63e9c63b9164637613e9ef5b",
-          "contentType": "image/jpeg",
-          "width": 4024,
-          "height": 6048,
-          "description": "a man with long hair and a beard with tattoos",
-          "photoDate": "2023-01-25T01:09:13Z",
+          "offsetX": 239.3580512897858,
           "thumbWidth": 119.53500997100613,
           "thumbHeight": 179.65898118902712,
-          "aspectRatio": 0.6653439153439153,
-          "offsetX": 239.3580512897858
+          "aspectRatio": 0.6653439153439153
         },
         {
           "_id": "63e9c63c9164637613e9ef5c",
-          "contentType": "image/jpeg",
-          "width": 3555,
-          "height": 5244,
-          "description": "ig - @pilseeta",
-          "location": "Mārupe, Mārupes novads, Latvia",
-          "properties": {
-            "exif": {
-              "make": "Premier",
-              "model": "AF M-8000",
-              "name": "Premier, AF M-8000",
-              "exposure_time": null,
-              "aperture": null,
-              "focal_length": "0.0",
-              "iso": null
-            }
-          },
-          "photoDate": "2023-01-25T11:09:29Z",
+          "offsetX": 358.8930612607919,
           "thumbWidth": 121.79398896395716,
           "thumbHeight": 179.65898118902712,
-          "aspectRatio": 0.6779176201372997,
-          "offsetX": 358.8930612607919
+          "aspectRatio": 0.6779176201372997
         },
         {
           "_id": "63e9c63c9164637613e9ef5d",
-          "contentType": "image/jpeg",
-          "width": 4400,
-          "height": 6600,
-          "description": "a mountain covered in snow and trees under a cloudy sky",
-          "photoDate": "2023-01-25T19:01:09Z",
+          "offsetX": 480.6870502247491,
           "thumbWidth": 119.77265412601807,
           "thumbHeight": 179.65898118902712,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 480.6870502247491
+          "aspectRatio": 0.6666666666666666
         }
       ],
       "offsetY": 2178.1319044595316,
@@ -910,68 +413,34 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 44,
       "items": [
         {
           "_id": "63e9c63c9164637613e9ef5e",
-          "contentType": "image/jpeg",
-          "width": 4000,
-          "height": 6000,
-          "description": "a close up of a blue and green object",
-          "photoDate": "2023-01-28T23:35:43Z",
+          "offsetX": 0,
           "thumbWidth": 117.33884493399356,
           "thumbHeight": 176.00826740099035,
-          "aspectRatio": 0.6666666666666666,
-          "offsetX": 0
+          "aspectRatio": 0.6666666666666666
         },
         {
           "_id": "63e9c63c9164637613e9ef5f",
-          "contentType": "image/jpeg",
-          "width": 3557,
-          "height": 5336,
-          "description": "a woman sitting on top of a black suitcase",
-          "location": "Hamburg, Germany",
-          "searchText": " a woman sitting on top of a black suitcase Hamburg, Germany",
-          "properties": {
-            "exif": {
-              "make": "SONY",
-              "model": "ILCE-7M3",
-              "name": "SONY, ILCE-7M3",
-              "exposure_time": "1/200",
-              "aperture": "2.5",
-              "focal_length": "85.0",
-              "iso": 400
-            }
-          },
-          "photoDate": "2023-01-29T04:12:02Z",
+          "offsetX": 117.33884493399356,
           "thumbWidth": 117.32784991479062,
           "thumbHeight": 176.00826740099035,
-          "aspectRatio": 0.6666041979010495,
-          "offsetX": 117.33884493399356
+          "aspectRatio": 0.6666041979010495
         },
         {
           "_id": "63e9c63c9164637613e9ef60",
-          "contentType": "image/jpeg",
-          "width": 4000,
-          "height": 3000,
-          "description": "a blue pillow with a bunch of different objects on it",
-          "photoDate": "2023-01-29T21:52:42Z",
+          "offsetX": 234.66669484878418,
           "thumbWidth": 234.6776898679871,
           "thumbHeight": 176.00826740099035,
-          "aspectRatio": 1.3333333333333333,
-          "offsetX": 234.66669484878418
+          "aspectRatio": 1.3333333333333333
         },
         {
           "_id": "63e9c63c9164637613e9ef61",
-          "contentType": "image/jpeg",
-          "width": 4635,
-          "height": 5794,
-          "description": "a person sitting at a table with a plate of food",
-          "photoDate": "2023-01-30T05:16:59Z",
+          "offsetX": 469.3443847167713,
           "thumbWidth": 140.80053838515536,
           "thumbHeight": 176.00826740099035,
-          "aspectRatio": 0.7999654815326199,
-          "offsetX": 469.3443847167713
+          "aspectRatio": 0.7999654815326199
         }
       ],
       "offsetY": 2357.7908856485587,
@@ -980,38 +449,17 @@
       "headings": []
     },
     {
-      "startingAssetDisplayIndex": 48,
       "items": [
         {
           "_id": "63e9c63c9164637613e9ef62",
-          "contentType": "image/jpeg",
-          "width": 4695,
-          "height": 5869,
-          "description": "a woman sitting at a table with a plate of food",
-          "photoDate": "2023-01-30T05:16:59Z",
+          "offsetX": 0,
           "thumbWidth": 119.99488839666041,
           "thumbHeight": 150,
           "aspectRatio": 0.7999659226444028
         },
         {
           "_id": "63e9c63c9164637613e9ef63",
-          "contentType": "image/jpeg",
-          "width": 2141,
-          "height": 3211,
-          "description": "Sydney Tower Eye",
-          "location": "悉尼, 悉尼, 澳大利亚",
-          "properties": {
-            "exif": {
-              "make": "Canon",
-              "model": " EOS R6",
-              "name": "Canon, EOS R6",
-              "exposure_time": "1/2500",
-              "aperture": "2.8",
-              "focal_length": "50.0",
-              "iso": 100
-            }
-          },
-          "photoDate": "2023-01-30T05:37:55Z",
+          "offsetX": 0,
           "thumbWidth": 100.01557147306134,
           "thumbHeight": 150,
           "aspectRatio": 0.6667704764870757

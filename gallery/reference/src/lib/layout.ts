@@ -70,7 +70,6 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
         // Add the first row.
         //
         curRow = {
-            startingAssetDisplayIndex: 0,
             items: [],
             offsetY: 0,
             height: targetRowHeight,
@@ -109,7 +108,6 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
                 //
                 prevRow = curRow;
                 curRow = {
-                    startingAssetDisplayIndex: prevRow && (prevRow.startingAssetDisplayIndex + prevRow.items.length) || 0,
                     items: [],
                     offsetY: 0,
                     height: targetRowHeight,
@@ -123,8 +121,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
                 // Break row on headings.
                 //
                 prevRow = curRow;
-                curRow = { //TODO: This should be optional.
-                    startingAssetDisplayIndex: prevRow && (prevRow.startingAssetDisplayIndex + prevRow.items.length) || 0,
+                curRow = {
                     items: [],
                     offsetY: 0,
                     height: targetRowHeight,
@@ -139,7 +136,8 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
         }
 
         const layoutItem: IGalleryLayoutItem = {
-            ...item,
+            _id: item._id,
+            offsetX: 0,
 
             //
             // Add computed thumb resolution.

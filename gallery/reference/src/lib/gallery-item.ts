@@ -37,37 +37,22 @@ export interface IGalleryLayoutItem {
     //
     // The horizontal location where the image starts in the gallery.
     //
-    offsetX?: number;
-
-    //
-    // The width of the item.
-    //
-    width: number;
-
-    //
-    // The height of item.
-    //
-    height: number;
+    offsetX: number;
 
     //
     // The computed width of the thumbnail.
     //
-    thumbWidth?: number;
+    thumbWidth: number;
 
     //
     // The computed height of the thumbnail.
     //
-    thumbHeight?: number;
+    thumbHeight: number;
 
     //
     // The aspect ratio of them item, once computed.
     //
-    aspectRatio?: number;
-
-    //
-    // Optional grouping for the item.
-    //
-    group?: string[];
+    aspectRatio: number;
 }
 
 //
@@ -80,11 +65,6 @@ export interface IGalleryRow {
     //
     type?: "heading";
     
-    //
-    // The index in the gallery of the first asset in this row.
-    //
-    startingAssetDisplayIndex: number;
-
     //
     // Items to display in this row in the gallery.
     //
