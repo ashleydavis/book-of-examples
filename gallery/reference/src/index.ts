@@ -42,5 +42,9 @@ function createRandomizedAssetBatches(assets: IGalleryItem[]): IGalleryItem[][] 
         }
     }
 
+    if (curBatch.length > 0) {
+        batches.push(curBatch);
+    }
+
     return batches;
 }
