@@ -132,6 +132,9 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
         }
     }
     else {
+        //
+        // No existing layout, starting fresh.
+        //
         existingRows = [];
         galleryHeight = 0;
     }
@@ -164,19 +167,17 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
 
     for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
         const row = rows[rowIndex];
-        //todo: Need to add headings back in.
-        // if (!headingsMatch(row.headings, prevHeadings)) {
-        //     rows.splice(rowIndex, 0, {
-        //         type: "heading",
-        //         startingAssetDisplayIndex: row.startingAssetDisplayIndex,
-        //         items: [],
-        //         offsetY: 0,
-        //         height: 45,
-        //         width: 0, // This isn't needed.
-        //         headings: row.headings,
-        //     });
-        //     rowIndex += 1;
-        // }
+        if (!headingsMatch(row.headings, prevHeadings)) {
+            rows.splice(rowIndex, 0, {
+                type: "heading",
+                items: [],
+                offsetY: 0,
+                height: 45,
+                width: 0,
+                headings: row.headings,
+            });
+            rowIndex += 1;
+        }
         
         prevHeadings = row.headings;
     }

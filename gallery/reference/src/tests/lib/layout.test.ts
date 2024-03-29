@@ -1,4 +1,5 @@
 import { computePartialLayout } from "../../lib/layout";
+const { objectContaining } = expect;
 
 describe("layout", () => {
 
@@ -166,12 +167,16 @@ describe("layout", () => {
         const targetRowHeight = 200;
         const layout = computePartialLayout(undefined, items, galleryWidth, targetRowHeight);
         
-        expect(layout.rows.length).toBe(2);
-        expect(layout.rows[0].items.length).toBe(1);
-        expect(layout.rows[0].items[0]._id).toBe(1);
-        expect(layout.rows[1].items.length).toBe(2);
-        expect(layout.rows[1].items[0]._id).toBe(2);
-        expect(layout.rows[1].items[1]._id).toBe(3);
+        expect(layout.rows.length).toBe(4);
+        expect(layout.rows[0]).toEqual(objectContaining({ 
+            type: "heading",
+            headings: [ "a" ],
+        }));
+        expect(layout.rows[1].items.length).toEqual(1);
+        expect(layout.rows[2]).toEqual(objectContaining({ 
+            type: "heading",
+            headings: [ "b" ],
+        }));
+        expect(layout.rows[3].items.length).toEqual(2);
     });
-
 });
