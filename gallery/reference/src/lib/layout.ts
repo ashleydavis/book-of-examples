@@ -163,24 +163,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
     //
     // Add group headings.
     //
-    let prevHeadings: string[] = [];
-
-    for (let rowIndex = 0; rowIndex < newRows.length; rowIndex++) {
-        const row = newRows[rowIndex];
-        if (!headingsMatch(row.headings, prevHeadings)) {
-            newRows.splice(rowIndex, 0, {
-                type: "heading",
-                items: [],
-                offsetY: 0,
-                height: 45,
-                width: 0,
-                headings: row.headings,
-            });
-            rowIndex += 1;
-        }
-        
-        prevHeadings = row.headings;
-    }
+    newRows = addHeadingRows(newRows);
 
     //
     // Computes the offsets of each row and total height of the gallery.
@@ -204,6 +187,37 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
         lastRow,
         galleryHeight,
     };
+}
+
+//
+// Add headings to the gallery.
+//
+function addHeadingRows(newRows: IGalleryRow[]): IGalleryRow[] {
+
+    const outputRows: IGalleryRow[] = [];
+
+    let prevHeadings: string[] = [];
+
+    for (let rowIndex = 0; rowIndex < newRows.length; rowIndex++) {
+        const row = newRows[rowIndex];
+        if (!headingsMatch(row.headings, prevHeadings)) {
+            // Add the heading to the output.
+            outputRows.push({
+                type: "heading",
+                items: [],
+                offsetY: 0,
+                height: 45,
+                width: 0,
+                headings: row.headings,
+            });
+        }
+        
+        outputRows.push(row);
+
+        prevHeadings = row.headings;
+    }
+
+    return outputRows;
 }
 
 //
