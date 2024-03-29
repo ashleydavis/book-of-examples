@@ -210,6 +210,11 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
 //
 function expandRows(rows: IGalleryRow[], galleryWidth: number): IGalleryRow[] {
 
+    if (rows.length === 0) {
+        // No rows to expand.
+        return rows;
+    }
+
     const outputRows: IGalleryRow[] = [];
 
     for (let rowIndex = 0; rowIndex < rows.length - 1; rowIndex++) {
@@ -258,6 +263,11 @@ function expandRows(rows: IGalleryRow[], galleryWidth: number): IGalleryRow[] {
 // Now pull back the width of all rows so they don't overlap the right hand edge by too much.
 //
 function pullbackRows(rows: IGalleryRow[], galleryWidth: number): IGalleryRow[] {
+
+    if (rows.length === 0) {
+        // No rows to pull back.
+        return rows;
+    }
 
     const outputRows: IGalleryRow[] = [];
 
