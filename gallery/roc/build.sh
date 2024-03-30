@@ -1,0 +1,1 @@
+roc build --linker legacy main.roc
