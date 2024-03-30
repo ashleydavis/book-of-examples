@@ -115,7 +115,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
 
     let existingRows: IGalleryRow[];
     let newRows: IGalleryRow[] = [];
-    let galleryHeight: number;
+    let existingGalleryHeight: number;
     let remainingItems = items;
     if (existingLayout) {   
         //
@@ -123,12 +123,13 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
         // Note the last row is dropped because we'll rebuild it.
         //
         existingRows = existingLayout.rows.slice(0, existingLayout.rows.length-1);
-        galleryHeight = existingLayout.galleryHeight;
+        existingGalleryHeight = existingLayout.galleryHeight;
         if (existingLayout.rows.length > 0) {
             //
             // Restarting the last row of the existing layout.
             //
             remainingItems = existingLayout.lastRow.concat(remainingItems);
+            existingGalleryHeight -= existingLayout.rows[existingLayout.rows.length-1].height; // Remove the height of the last row.
         }
     }
     else {
@@ -136,7 +137,7 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
         // No existing layout, starting fresh.
         //
         existingRows = [];
-        galleryHeight = 0;
+        existingGalleryHeight = 0;
     }
 
     //
@@ -168,25 +169,45 @@ export function computePartialLayout(existingLayout: IGalleryLayout | undefined,
     //
     // Computes the offsets of each row and total height of the gallery.
     //
+    newRows = computeOffsets(newRows, existingGalleryHeight);
 
-    for (let rowIndex = 0; rowIndex < newRows.length-1; rowIndex++) {
-        const row = newRows[rowIndex];
-        row.offsetY = galleryHeight;
-        galleryHeight += row.height;
-
-        let accumulatedWidth = 0;
-
-        for (const item of row.items) {
-            item.offsetX = accumulatedWidth;
-            accumulatedWidth += item.thumbWidth;
-        }
-    }
+    const newGalleryHeight = existingGalleryHeight + newRows.reduce((acc, row) => acc + row.height, 0);
 
     return {
         rows: existingRows.concat(newRows),
         lastRow,
-        galleryHeight,
+        galleryHeight: newGalleryHeight,
     };
+}
+
+//
+// Compute offsets of rows and items.
+//
+function computeOffsets(newRows: IGalleryRow[], galleryHeight: number): IGalleryRow[] {
+
+    const outputRows: IGalleryRow[] = [];
+
+    for (let rowIndex = 0; rowIndex < newRows.length; rowIndex++) {
+        const row = newRows[rowIndex];
+        let accumulatedWidth = 0;
+
+        outputRows.push({
+            ...row,
+            offsetY: galleryHeight,
+            items: row.items.map(item => {
+                const newItem = {
+                    ...item,
+                    offsetX: accumulatedWidth,
+                };
+                accumulatedWidth += item.thumbWidth;
+                return newItem;
+            }),        
+        });
+
+        galleryHeight += row.height;
+    }
+
+    return outputRows;
 }
 
 //

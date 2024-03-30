@@ -459,13 +459,13 @@
         },
         {
           "_id": "63e9c63c9164637613e9ef63",
-          "offsetX": 0,
+          "offsetX": 119.99488839666041,
           "thumbWidth": 100.01557147306134,
           "thumbHeight": 150,
           "aspectRatio": 0.6667704764870757
         }
       ],
-      "offsetY": 0,
+      "offsetY": 2533.799153049549,
       "height": 150,
       "width": 220.01045986972176,
       "headings": []
@@ -501,5 +501,5 @@
       "photoDate": "2023-01-30T05:37:55Z"
     }
   ],
-  "galleryHeight": 2533.799153049549
+  "galleryHeight": 2683.799153049549
 }
