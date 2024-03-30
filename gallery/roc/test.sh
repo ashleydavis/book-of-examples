@@ -1,0 +1,1 @@
+roc test --linker legacy
