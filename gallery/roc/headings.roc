@@ -3,7 +3,7 @@ interface Headings
     imports []
 
 headingsMatch = \headingA, headingB ->
-    if List.len(headingA) != List.len(headingB) then 
+    if List.len headingA != List.len headingB then 
         Bool.false
     else 
         Bool.true
