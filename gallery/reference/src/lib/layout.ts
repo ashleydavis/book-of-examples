@@ -30,13 +30,17 @@ export function headingsMatch(headingsA: string[], headingsB: string[]): boolean
         return false;
     }
 
-    for (let i = 0; i < headingsA.length; i++) {
-        if (headingsA[i] !== headingsB[i]) {
-            return false;
-        }
+    if (headingsA.length === 0 && headingsB.length === 0) {
+        // Matching empty lists.
+        return true; 
     }
 
-    return true;
+    if (headingsA[0] !== headingsB[0]) {
+        // First item doesn't match.
+        return false;
+    }
+
+    return headingsMatch(headingsA.slice(1), headingsB.slice(1));
 }
 
 //
