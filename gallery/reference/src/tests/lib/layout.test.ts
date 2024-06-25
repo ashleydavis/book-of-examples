@@ -12,7 +12,7 @@ describe("layout", () => {
     });
 
     test("empty second heading doesn't match first heading", () => {
-        expect(headingsMatch([], ["a"])).toBe(false);
+        expect(headingsMatch(["a"], [])).toBe(false);
     });
 
     test("headings match", () => {
