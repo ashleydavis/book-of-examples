@@ -27,6 +27,7 @@ export interface IGalleryLayout {
 //
 export function headingsMatch(headingsA: string[], headingsB: string[]): boolean {
     if (headingsA.length !== headingsB.length) {
+        // Different lengths.
         return false;
     }
 
@@ -40,6 +41,7 @@ export function headingsMatch(headingsA: string[], headingsB: string[]): boolean
         return false;
     }
 
+    // Look at the rest of the list.
     return headingsMatch(headingsA.slice(1), headingsB.slice(1));
 }
 
