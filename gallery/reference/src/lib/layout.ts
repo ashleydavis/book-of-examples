@@ -25,7 +25,7 @@ export interface IGalleryLayout {
 //
 // Returns true if two sets of headings match.
 //
-function headingsMatch(headingsA: string[], headingsB: string[]): boolean {
+export function headingsMatch(headingsA: string[], headingsB: string[]): boolean {
     if (headingsA.length !== headingsB.length) {
         return false;
     }

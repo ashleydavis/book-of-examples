@@ -1,7 +1,34 @@
-import { computePartialLayout } from "../../lib/layout";
+import { computePartialLayout, headingsMatch } from "../../lib/layout";
 const { objectContaining } = expect;
 
 describe("layout", () => {
+
+    test("empty headings match", () => {
+        expect(headingsMatch([], [])).toBe(true);
+    });
+
+    test("empty first heading doesn't match second heading", () => {
+        expect(headingsMatch([], ["a"])).toBe(false);
+    });
+
+    test("empty second heading doesn't match first heading", () => {
+        expect(headingsMatch([], ["a"])).toBe(false);
+    });
+
+    test("headings match", () => {
+        expect(headingsMatch(["a"], ["a"])).toBe(true);
+        expect(headingsMatch(["a", "b"], ["a", "b"])).toBe(true);
+    });
+
+    test("headings don't match", () => {
+        expect(headingsMatch(["a"], ["b"])).toBe(false);
+        expect(headingsMatch(["a", "b"], ["b", "a"])).toBe(false);
+    });
+
+    test("ragged headings don't match", () => {
+        expect(headingsMatch(["a"], ["a", "b"])).toBe(false);
+        expect(headingsMatch(["a", "b"], ["a"])).toBe(false);
+    });
 
     test("an empty gallery returns an empty layout", () => {
 
