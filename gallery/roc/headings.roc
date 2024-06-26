@@ -9,12 +9,20 @@ headingsMatch = \headingA, headingB ->
     else if List.len headingA == 0 && List.len headingB == 0 then
         # Matching empty lists.
         Bool.true
-    else if List.first headingA != List.first headingB then
-        # First item doesn't match.
-        Bool.false
     else
+        listsMatch = \listA, listB ->
+            if List.first listA != List.first listB then
+                # First item doesn't match.
+                Bool.false
+            else if List.len listA == 1 then
+                # Last item matches.
+                Bool.true
+            else 
+                # Look at the rest of the list.
+                listsMatch (List.dropFirst listA 1) (List.dropFirst listB 1)
+
         # Look at the rest of the list.
-        headingsMatch (List.dropFirst headingA 1) (List.dropFirst headingB 1)
+        listsMatch headingA headingB
 
 expect headingsMatch [] [] == Bool.true
 expect headingsMatch [] ["a"] == Bool.false
