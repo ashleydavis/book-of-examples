@@ -48,70 +48,81 @@ export function headingsMatch(headingsA: string[], headingsB: string[]): boolean
 //
 // Get the next row of items, possibly continuing the previous row.
 //
-export function getNextRow(items: IGalleryItem[], galleryWidth: number, targetRowHeight: number): 
-    { row: IGalleryRow, removedItems: IGalleryItem[], remainingItems: IGalleryItem[] } {
+export function getNextRow(items: IGalleryItem[], galleryWidth: number,
+    targetRowHeight: number, currentRowItems: IGalleryLayoutItem[] = [],
+    width: number = 0, removedItems: IGalleryItem[] = [], headings: string[] = [])
+        : { row: IGalleryRow, removedItems: IGalleryItem[], remainingItems: IGalleryItem[] } {
 
-    const layoutItems: IGalleryLayoutItem[] = [];
-    let width = 0;
-
-    let numItemsAdded = 0;
-    let removedItems: IGalleryItem[] = [];
-    let headings: string[] = [];
-
-    for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
-        const item = items[itemIndex];
-        const aspectRatio = item.width / item.height;
-        const computedWidth = targetRowHeight * aspectRatio;
-
-        const itemGroup = item.group || [];
-
-        if (layoutItems.length > 0) {
-            if (width + computedWidth > galleryWidth) {
-                //
-                // Break row on width.
-                //
-                break;
-            }
-            else if (!headingsMatch(headings, itemGroup)) {
-                //
-                // Break row on headings.
-                //
-                break;
-            }
-        }
-        else {
-            headings = itemGroup;
-        }
-
-        const layoutItem: IGalleryLayoutItem = {
-            _id: item._id,
-            offsetX: 0,
-
-            //
-            // Add computed thumb resolution.
-            //
-            thumbWidth: computedWidth,
-            thumbHeight: targetRowHeight,
-            aspectRatio: aspectRatio,
+    // Base case: if there are no items left, return the current row and removed items
+    if (items.length === 0) {
+        return { 
+            row: {                
+                items: currentRowItems, 
+                offsetY: 0,
+                height: targetRowHeight,
+                width,
+                headings,
+            },
+            removedItems, 
+            remainingItems: items 
         };
-
-        layoutItems.push(layoutItem);
-        width += computedWidth;
-        numItemsAdded += 1;
-        removedItems.push(item);
     }
 
-    return {
-        row: {
-            items: layoutItems,
-            offsetY: 0,
-            height: targetRowHeight,
-            width,
-            headings,
-        },
-        removedItems,
-        remainingItems: items.slice(numItemsAdded),
+    const item = items[0];
+    const aspectRatio = item.width / item.height;
+    const computedWidth = targetRowHeight * aspectRatio;
+    const itemGroup = item.group || [];
+
+    // Check conditions to decide whether to break the row
+    if ((currentRowItems.length > 0 && (width + computedWidth > galleryWidth || !headingsMatch(headings, itemGroup)))) {
+        // Return the current row and removed items as we need to start a new row
+        return { 
+            row: {                
+                items: currentRowItems, 
+                offsetY: 0,
+                height: targetRowHeight,
+                width,
+                headings,
+            },
+            removedItems, 
+            remainingItems: items 
+        };
+    }
+
+    if ((currentRowItems.length === 0 && headings.length > 0 && !headingsMatch(headings, itemGroup))) {
+        // Return the current row and removed items as we need to start a new row
+        return { 
+            row: {                
+                items: currentRowItems, 
+                offsetY: 0,
+                height: targetRowHeight,
+                width,
+                headings,
+            },
+            removedItems, 
+            remainingItems: items 
+        };
+    }
+
+    // Otherwise, continue adding the item to the current row
+    const layoutItem: IGalleryLayoutItem = {
+        _id: item._id,
+        offsetX: 0,
+        thumbWidth: computedWidth,
+        thumbHeight: targetRowHeight,
+        aspectRatio: aspectRatio,
     };
+
+    // Recursive call to process the next item
+    return getNextRow(
+        items.slice(1),  // Pass the remaining items
+        galleryWidth,
+        targetRowHeight,
+        [ ...currentRowItems, layoutItem ],  // Update the current row
+        width + computedWidth,  // Update the accumulated width
+        [...removedItems, item],  // Accumulate removed items
+        headings.length === 0 ? itemGroup : headings  // Update headings if necessary
+    );
 }
 
 //
