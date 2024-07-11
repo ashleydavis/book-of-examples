@@ -64,7 +64,7 @@ export function getNextRow(items: IGalleryItem[], galleryWidth: number,
                 headings,
             },
             removedItems, 
-            remainingItems: items 
+            remainingItems: []
         };
     }
 

@@ -22,8 +22,8 @@ getNextRow = \items,            galleryWidth,   targetRowHeight, currentRowItems
         row: {
             items: currentRowItems,
             offsetY: 0,
-            width,
             height: targetRowHeight,
+            width,
             headings
         },
         removedItems,
@@ -71,3 +71,5 @@ expect
         removedItems,
         remainingItems: []
     }
+
+
