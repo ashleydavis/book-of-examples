@@ -3,6 +3,9 @@ interface Layout
     imports []
 
 GalleryItem : {
+    width : Int U32,
+    height : Int U32,
+    headings : List Str,
 }
 
 LayoutItem : {
@@ -20,7 +23,7 @@ getNextRow : List GalleryItem,  Int U32,        Int U32,         List GalleryIte
 getNextRow = \items,            galleryWidth,   targetRowHeight, currentRowItems,   width,      removedItems,       headings -> 
     if List.len items == 0 then {
         row: {
-            items: currentRowItems,
+            items: List.map currentRowItems \galleryItem -> {}, # Produces layout items from gallery items.
             offsetY: 0,
             height: targetRowHeight,
             width,
@@ -53,16 +56,24 @@ expect getNextRow [] 10  20 [] 0 [] [] == {
     removedItems: [],
     remainingItems: []
 }
+
+# Makes a gallery item for testing.
+makeDefaultItem : _ -> GalleryItem
+makeDefaultItem = \_ -> {
+    width: 10,
+    height: 20,
+    headings: []
+}    
     
 # No items left returns current row.
 expect 
-    currentRowItems = [{}, {}, {}]
-    removedItems = [{}, {}]
+    currentRowItems = [makeDefaultItem, makeDefaultItem, makeDefaultItem]
+    removedItems = [makeDefaultItem, makeDefaultItem]
     headings = ["a", "b"]
     out = getNextRow [] 10 21 currentRowItems 12 removedItems headings
     out == {
         row: {
-            items: currentRowItems,
+            items: [{}, {}],
             offsetY: 0,
             width: 12,
             height: 21,
@@ -72,4 +83,22 @@ expect
         remainingItems: []
     }
 
+# Breaks the row the row width overflows the gallery width.
+# expect 
+#     currentRowItems = [{}, {}, {}]
+#     removedItems = [{}, {}]
+#     headings = ["a", "b"]
+#     out = getNextRow [] 10 21 currentRowItems 12 removedItems headings
+#     out == {
+#         row: {
+#             items: currentRowItems,
+#             offsetY: 0,
+#             width: 12,
+#             height: 21,
+#             headings,
+#         },
+#         removedItems,
+#         remainingItems: []
+#     }
 
+# Breaks the row the headings don't match.
