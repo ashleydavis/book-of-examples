@@ -174,19 +174,19 @@ describe("layout", () => {
                 _id: 1,
                 width: 100,
                 height: 200,
-                group: [ "a" ],
+                headings: [ "a" ],
             },
             {
                 _id: 2,
                 width: 100,
                 height: 200,
-                group: [ "b" ],
+                headings: [ "b" ],
             },
             {
                 _id: 3,
                 width: 100,
                 height: 200,
-                group: [ "b" ],
+                headings: [ "b" ],
             },
         ];
 

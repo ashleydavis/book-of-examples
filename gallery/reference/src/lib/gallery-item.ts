@@ -19,9 +19,9 @@ export interface IGalleryItem  {
     height: number;
 
     //
-    // Optional grouping for the item.
+    // Optional headings for the item.
     //
-    group?: string[];
+    headings?: string[];
 }
 
 //

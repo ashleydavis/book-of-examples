@@ -71,7 +71,7 @@ export function getNextRow(items: IGalleryItem[], galleryWidth: number,
     const item = items[0];
     const aspectRatio = item.width / item.height;
     const computedWidth = targetRowHeight * aspectRatio;
-    const itemGroup = item.group || [];
+    const itemGroup = item.headings || [];
 
     // Check conditions to decide whether to break the row
     if ((currentRowItems.length > 0 && (width + computedWidth > galleryWidth || !headingsMatch(headings, itemGroup)))) {
