@@ -10,37 +10,31 @@ LayoutItem : {
 
 LayoutRow : {
     items : List LayoutItem,
-    galleryWidth : Int U32,
-    targetRowHeight : Int U32,
-    currentRowItems : List GalleryItem,
+    offsetY : Int U32,
     width : Int U32,
-    removedItems : List GalleryItem,
-    headings : List Str
+    height : Int U32,
+    headings : List Str,
 }
 
 getNextRow : List GalleryItem,  Int U32,        Int U32,         List GalleryItem,  Int U32,    List GalleryItem,   List Str -> { row : LayoutRow, removedItems: List GalleryItem, remainingItems : List GalleryItem }
 getNextRow = \items,            galleryWidth,   targetRowHeight, currentRowItems,   width,      removedItems,       headings -> 
     if List.len items == 0 then {
         row: {
-            items: [],
-            galleryWidth,
-            targetRowHeight,
-            currentRowItems,
+            items: currentRowItems,
+            offsetY: 0,
             width,
-            removedItems,
+            height: targetRowHeight,
             headings
         },
-        removedItems: [],
+        removedItems,
         remainingItems: []
     }
     else {
         row: {
             items: [],
-            galleryWidth,
-            targetRowHeight,
-            currentRowItems,
+            offsetY: 0,
             width,
-            removedItems,
+            height: targetRowHeight,
             headings
         },
         removedItems: [],
@@ -51,11 +45,9 @@ getNextRow = \items,            galleryWidth,   targetRowHeight, currentRowItems
 expect getNextRow [] 10  20 [] 0 [] [] == {
     row: {
         items: [],
-        galleryWidth: 10,
-        targetRowHeight: 20,
-        currentRowItems: [],
+        offsetY: 0,
         width: 0,
-        removedItems: [],
+        height: 20,
         headings: []
     },
     removedItems: [],
@@ -69,13 +61,12 @@ expect
     headings = ["a", "b"]
     out = getNextRow [] 10 21 currentRowItems 12 removedItems headings
     out == {
-        row: LayoutRow {
+        row: {
             items: currentRowItems,
             offsetY: 0,
-            height: 21,
-            currentRowItems: [],
             width: 12,
-            headings
+            height: 21,
+            headings,
         },
         removedItems,
         remainingItems: []
