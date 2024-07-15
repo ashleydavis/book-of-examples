@@ -3,8 +3,8 @@ interface Layout
     imports []
 
 GalleryItem : {
-    width : Int U32,
-    height : Int U32,
+    width : U32,
+    height : U32,
     headings : List Str,
 }
 
@@ -13,13 +13,13 @@ LayoutItem : {
 
 LayoutRow : {
     items : List LayoutItem,
-    offsetY : Int U32,
-    width : Int U32,
-    height : Int U32,
+    offsetY : U32,
+    width : U32,
+    height : U32,
     headings : List Str,
 }
 
-getNextRow : List GalleryItem,  Int U32,        Int U32,         List GalleryItem,  Int U32,    List GalleryItem,   List Str -> { row : LayoutRow, removedItems: List GalleryItem, remainingItems : List GalleryItem }
+getNextRow : List GalleryItem,  U32,        U32,         List GalleryItem,  U32,    List GalleryItem,   List Str -> { row : LayoutRow, removedItems: List GalleryItem, remainingItems : List GalleryItem }
 getNextRow = \items,            galleryWidth,   targetRowHeight, currentRowItems,   width,      removedItems,       headings -> 
     if List.len items == 0 then {
         row: {
@@ -67,13 +67,13 @@ makeDefaultItem = \_ -> {
     
 # No items left returns current row.
 expect 
-    currentRowItems = [makeDefaultItem, makeDefaultItem, makeDefaultItem]
-    removedItems = [makeDefaultItem, makeDefaultItem]
+    currentRowItems = [makeDefaultItem {}, makeDefaultItem {}, makeDefaultItem {}]
+    removedItems = [makeDefaultItem {}, makeDefaultItem {}]
     headings = ["a", "b"]
     out = getNextRow [] 10 21 currentRowItems 12 removedItems headings
     out == {
         row: {
-            items: [{}, {}],
+            items: [{}, {}, {}],
             offsetY: 0,
             width: 12,
             height: 21,
@@ -83,22 +83,3 @@ expect
         remainingItems: []
     }
 
-# Breaks the row the row width overflows the gallery width.
-# expect 
-#     currentRowItems = [{}, {}, {}]
-#     removedItems = [{}, {}]
-#     headings = ["a", "b"]
-#     out = getNextRow [] 10 21 currentRowItems 12 removedItems headings
-#     out == {
-#         row: {
-#             items: currentRowItems,
-#             offsetY: 0,
-#             width: 12,
-#             height: 21,
-#             headings,
-#         },
-#         removedItems,
-#         remainingItems: []
-#     }
-
-# Breaks the row the headings don't match.
