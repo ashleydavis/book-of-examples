@@ -20,7 +20,7 @@ LayoutRow : {
 }
 
 getNextRow : List GalleryItem,  U32,        U32,         List GalleryItem,  U32,    List GalleryItem,   List Str -> { row : LayoutRow, removedItems: List GalleryItem, remainingItems : List GalleryItem }
-getNextRow = \items,            galleryWidth,   targetRowHeight, currentRowItems,   width,      removedItems,       headings -> 
+getNextRow = \items,            galleryWidth,   targetRowHeight,    currentRowItems,    width,  removedItems,       headings -> 
     if List.len items == 0 then {
         row: {
             items: List.map currentRowItems \galleryItem -> {}, # Produces layout items from gallery items.
@@ -32,17 +32,33 @@ getNextRow = \items,            galleryWidth,   targetRowHeight, currentRowItems
         removedItems,
         remainingItems: []
     }
-    else {
-        row: {
-            items: [],
-            offsetY: 0,
-            width,
-            height: targetRowHeight,
-            headings
-        },
-        removedItems: [],
-        remainingItems: []
-    }
+    else
+        item = List.first items
+        aspectRatio = item.width / item.height
+        computedWidth = (Num.toFrac targetRowHeight) * aspectRatio
+        if (List.len currentRowItems) > 0 
+           && (Num.toFrac width) + computedWidth <= (Num.toFrac galleryWidth) then {
+            row: {
+                items: List.map currentRowItems \galleryItem -> {}, # Produces layout items from gallery items.
+                offsetY: 0,
+                width,
+                height: targetRowHeight,
+                headings
+            },
+            removedItems,
+            remainingItems: items,
+        }        
+        else {
+            row: {
+                items: [],
+                offsetY: 0,
+                width,
+                height: targetRowHeight,
+                headings
+            },
+            removedItems: [],
+            remainingItems: []
+        }
 
 # Empty gallery returns empty layout.
 expect getNextRow [] 10  20 [] 0 [] [] == {
@@ -81,5 +97,33 @@ expect
         },
         removedItems,
         remainingItems: []
+    }
+
+# Makes a gallery item for testing.
+makeSquareItem : _ -> GalleryItem
+makeSquareItem = \width -> {
+    width,
+    height: width,
+    headings: []
+}        
+
+# Row breaks when computed row width exceeds gallery width
+expect 
+    currentRowItems = [makeDefaultItem {}, makeDefaultItem {}, makeDefaultItem {}]
+    removedItems = [makeDefaultItem {}, makeDefaultItem {}]
+    headings = []
+    galleryWidth = 10
+    nextItem = makeSquareItem 100 # The next item goes over gallery width.
+    out = getNextRow [nextItem] galleryWidth 21 currentRowItems 12 removedItems headings
+    out == {
+        row: {
+            items: [{}, {}, {}],
+            offsetY: 0,
+            width: 12,
+            height: 21,
+            headings,
+        },
+        removedItems: [],
+        remainingItems: [nextItem]
     }
 
