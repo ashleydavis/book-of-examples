@@ -19,29 +19,29 @@ LayoutRow : {
     headings : List Str,
 }
 
-getNextRow : List GalleryItem,  U32,        U32,         List GalleryItem,  U32,    List GalleryItem,   List Str -> { row : LayoutRow, removedItems: List GalleryItem, remainingItems : List GalleryItem }
-getNextRow = \items,            galleryWidth,   targetRowHeight,    currentRowItems,    width,  removedItems,       headings -> 
+getNextRow : List GalleryItem,  U32,            U32,                List GalleryItem,   U32,            List GalleryItem,   List Str -> { row : LayoutRow, removedItems: List GalleryItem, remainingItems : List GalleryItem }
+getNextRow = \items,            galleryWidth,   targetRowHeight,    currentRowItems,    curRowWidth,    removedItems,       headings -> 
     when List.first items is
         Err ListWasEmpty -> {
             row: {
                 items: List.map currentRowItems \galleryItem -> {}, # Produces layout items from gallery items.
                 offsetY: 0,
                 height: targetRowHeight,
-                width,
+                width: curRowWidth,
                 headings
             },
             removedItems,
             remainingItems: []
         }
         Ok item ->
-            aspectRatio = item.width / item.height
+            aspectRatio = (Num.toFrac item.width) / (Num.toFrac item.height)
             computedWidth = (Num.toFrac targetRowHeight) * aspectRatio
             if (List.len currentRowItems) > 0 
-            && (Num.toFrac width) + computedWidth <= (Num.toFrac galleryWidth) then {
+                && ((Num.toFrac curRowWidth) + computedWidth) > (Num.toFrac galleryWidth) then {
                 row: {
                     items: List.map currentRowItems \galleryItem -> {}, # Produces layout items from gallery items.
                     offsetY: 0,
-                    width,
+                    width: curRowWidth,
                     height: targetRowHeight,
                     headings
                 },
@@ -52,7 +52,7 @@ getNextRow = \items,            galleryWidth,   targetRowHeight,    currentRowIt
                 row: {
                     items: [],
                     offsetY: 0,
-                    width,
+                    width: curRowWidth,
                     height: targetRowHeight,
                     headings
                 },
@@ -113,8 +113,10 @@ expect
     removedItems = [makeDefaultItem {}, makeDefaultItem {}]
     headings = []
     galleryWidth = 10
+    targetRowHeight = 21
+    curRowWidth = 12
     nextItem = makeSquareItem 100 # The next item goes over gallery width.
-    out = getNextRow [nextItem] galleryWidth 21 currentRowItems 12 removedItems headings
+    out = getNextRow [nextItem] galleryWidth targetRowHeight currentRowItems curRowWidth removedItems headings
     out == {
         row: {
             items: [{}, {}, {}],
