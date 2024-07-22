@@ -21,44 +21,44 @@ LayoutRow : {
 
 getNextRow : List GalleryItem,  U32,        U32,         List GalleryItem,  U32,    List GalleryItem,   List Str -> { row : LayoutRow, removedItems: List GalleryItem, remainingItems : List GalleryItem }
 getNextRow = \items,            galleryWidth,   targetRowHeight,    currentRowItems,    width,  removedItems,       headings -> 
-    if List.len items == 0 then {
-        row: {
-            items: List.map currentRowItems \galleryItem -> {}, # Produces layout items from gallery items.
-            offsetY: 0,
-            height: targetRowHeight,
-            width,
-            headings
-        },
-        removedItems,
-        remainingItems: []
-    }
-    else
-        item = List.first items
-        aspectRatio = item.width / item.height
-        computedWidth = (Num.toFrac targetRowHeight) * aspectRatio
-        if (List.len currentRowItems) > 0 
-           && (Num.toFrac width) + computedWidth <= (Num.toFrac galleryWidth) then {
+    when List.first items is
+        Err ListWasEmpty -> {
             row: {
                 items: List.map currentRowItems \galleryItem -> {}, # Produces layout items from gallery items.
                 offsetY: 0,
-                width,
                 height: targetRowHeight,
+                width,
                 headings
             },
             removedItems,
-            remainingItems: items,
-        }        
-        else {
-            row: {
-                items: [],
-                offsetY: 0,
-                width,
-                height: targetRowHeight,
-                headings
-            },
-            removedItems: [],
             remainingItems: []
         }
+        Ok item ->
+            aspectRatio = item.width / item.height
+            computedWidth = (Num.toFrac targetRowHeight) * aspectRatio
+            if (List.len currentRowItems) > 0 
+            && (Num.toFrac width) + computedWidth <= (Num.toFrac galleryWidth) then {
+                row: {
+                    items: List.map currentRowItems \galleryItem -> {}, # Produces layout items from gallery items.
+                    offsetY: 0,
+                    width,
+                    height: targetRowHeight,
+                    headings
+                },
+                removedItems,
+                remainingItems: items,
+            }        
+            else {
+                row: {
+                    items: [],
+                    offsetY: 0,
+                    width,
+                    height: targetRowHeight,
+                    headings
+                },
+                removedItems: [],
+                remainingItems: []
+            }
 
 # Empty gallery returns empty layout.
 expect getNextRow [] 10  20 [] 0 [] [] == {
@@ -123,7 +123,7 @@ expect
             height: 21,
             headings,
         },
-        removedItems: [],
+        removedItems,
         remainingItems: [nextItem]
     }
 
